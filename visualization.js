@@ -1,6 +1,5 @@
 
-const startDate = 1980;
-const endDate = 2018;
+
 
 // Using jQuery, read our data and call visualize(...) only once the page is ready:
 $(function() {
@@ -30,16 +29,36 @@ var visualize = function(data) {
     .attr("transform", "translate(" + margin.left + "," + margin.top + ")");
 
   // Visualization Code:
-  var xScale = d3.scaleLinear().domain([1980, 2018]).range([0, width / 3]);
+  var startDate = 1980;
+  var endDate = 2018;
+
+  var xScale = d3.scaleLinear().domain([startDate, endDate]).range([0, width / 3]);
 
   var yScale = d3.scaleLinear().domain([0, 2000]).range([height, 0]);
 
   var yAxisLeftVariable = d3.axisLeft().scale(yScale);
   var yAxisRightVariable = d3.axisRight().scale(yScale);
 
-  var yearToCount = new Object();
+  var majorToCounts = new Map();
   data.forEach(function (d, i) {
-       return xScale( 1980 );
+    if (d["Fall"] == startDate) {
+      majorToCounts[d["Major Name"]].set([d["Total"]]);
+      
+    } else if (majorToCounts.has(d["Major Name"]) && d["Fall"] == endDate) {
+      majorToCounts[d["Major Name"]].push(d["Total"]);
+      console.log(d["Fall"]);
+    }
+
+    console.log(majorToCounts);
+  });
+
+  console.log(majorToCounts);
+
+  majorToCounts.forEach((value,key,map)=>
+  {
+    if (majorToCounts[key].size() == 1 || majorToCounts[key].size() == 0) {
+      majorToCounts.delete(key);
+    }
   });
 
   svg.append("g")
@@ -51,18 +70,39 @@ var visualize = function(data) {
     .attr("transform", "translate( " + (width / 3) + ", 0 )")
     .call(yAxisRightVariable);
 
+  majorToCounts.forEach((value,key,map)=>
+  {
+    svg.append("line")
+        .attr("x1", function (d, i) {
+           return xScale( startDate );
+         })
+         .attr("y1", function (d, i) {
+           return yScale( majorToCounts[key][0] );
+         })
+         .attr("x2", function (d, i) {
+           return xScale( endDate );
+         })
+         .attr("y2", function (d, i) {
+           return yScale( majorToCounts[key][1] );
+         })
+         .attr("stroke-width", 1)
+         .attr("stroke", "black");
+
+    console.log(majorToCounts[key][0]);
+  });
+/*
   svg.selectAll("Fall")
      .data(data)
      .enter()
      .append("line")
      .attr("x1", function (d, i) {
-       return xScale( 1980 );
+       return xScale( startDate );
      })
      .attr("y1", function (d, i) {
        return yScale( 500 );
      })
      .attr("x2", function (d, i) {
-       return xScale( 2018 );
+       return xScale( endDate );
      })
      .attr("y2", function (d, i) {
        return yScale( 1500 );
@@ -77,7 +117,7 @@ var visualize = function(data) {
      .attr("r", 3)
      .attr("fill", "black")
      .attr("cx", function (d, i) {
-       return xScale( 1980 );
+       return xScale( startDate );
      })
      .attr("cy", function (d, i) {
        return yScale( 500 );
@@ -90,10 +130,10 @@ var visualize = function(data) {
      .attr("r", 3)
      .attr("fill", "black")
      .attr("cx", function (d, i) {
-       return xScale( 2018 );
+       return xScale( endDate );
      })
      .attr("cy", function (d, i) {
        return yScale( 1500 );
      });
-
+*/
 };
