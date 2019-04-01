@@ -42,21 +42,18 @@ var visualize = function(data) {
   var majorToCounts = new Map();
   data.forEach(function (d, i) {
     if (d["Fall"] == startDate) {
-      majorToCounts[d["Major Name"]].set([d["Total"]]);
-      
+      majorToCounts.set(d["Major Name"], [d["Total"]]);
     } else if (majorToCounts.has(d["Major Name"]) && d["Fall"] == endDate) {
-      majorToCounts[d["Major Name"]].push(d["Total"]);
+      majorToCounts.get(d["Major Name"]).push(d["Total"]);
       console.log(d["Fall"]);
     }
-
-    console.log(majorToCounts);
   });
 
   console.log(majorToCounts);
 
   majorToCounts.forEach((value,key,map)=>
   {
-    if (majorToCounts[key].size() == 1 || majorToCounts[key].size() == 0) {
+    if (majorToCounts.get(key).length == 1 || majorToCounts.get(key).length == 0) {
       majorToCounts.delete(key);
     }
   });
@@ -77,18 +74,16 @@ var visualize = function(data) {
            return xScale( startDate );
          })
          .attr("y1", function (d, i) {
-           return yScale( majorToCounts[key][0] );
+           return yScale( majorToCounts.get(key)[0] );
          })
          .attr("x2", function (d, i) {
            return xScale( endDate );
          })
          .attr("y2", function (d, i) {
-           return yScale( majorToCounts[key][1] );
+           return yScale( majorToCounts.get(key)[1] );
          })
          .attr("stroke-width", 1)
          .attr("stroke", "black");
-
-    console.log(majorToCounts[key][0]);
   });
 /*
   svg.selectAll("Fall")
