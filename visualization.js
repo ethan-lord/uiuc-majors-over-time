@@ -42,6 +42,7 @@ var visualize = function(data, college, id) {
   var yAxisLeftVariable = d3.axisLeft().scale(yScale);
   var yAxisRightVariable = d3.axisRight().scale(yScale);
 
+  // {Key: Major name, Value: [startDateTotal, endDateTotal]}
   var majorToCounts = new Map();
   data.forEach(function (d, i) {
     if (d["College"] == college) {
@@ -53,7 +54,7 @@ var visualize = function(data, college, id) {
     }
   });
 
-  majorToCounts.forEach((value,key,map)=>
+  majorToCounts.forEach((value, key, map)=>
   {
     if (majorToCounts.get(key).length == 1 || majorToCounts.get(key).length == 0) {
       majorToCounts.delete(key);
@@ -87,6 +88,55 @@ var visualize = function(data, college, id) {
          .attr("stroke-width", 1)
          .attr("stroke", "black");
   });
+
+
+  var yearRange = d3.range(0, 39).map(function(d) {
+      if((1980 + d) % 5 == 0 || (1980 + d) == 2018){
+        return new Date(1980 + d, 1, 1);
+      }
+  });
+
+  var sliderStart = d3
+    .sliderHorizontal()
+    .min(d3.min(yearRange))
+    .max(d3.max(yearRange))
+    .step(1000 * 60 * 60 * 24 * 365)
+    .width(500)
+    .displayValue(true)
+    .tickFormat(d3.timeFormat('%Y'))
+    .on('onchange', val => {
+      startDate = val;
+    })
+    .default(new Date(1980, 1, 1));
+
+  var sliderEnd = d3
+    .sliderHorizontal()
+    .min(d3.min(yearRange))
+    .max(d3.max(yearRange))
+    .step(1000 * 60 * 60 * 24 * 365)
+    .width(500)
+    .displayValue(true)
+    .tickFormat(d3.timeFormat('%Y'))
+    .on('onchange', val => {
+      endDate = val;
+    })
+      .default(new Date(2018, 1, 1));
+
+    d3.select('#slider')
+       .append('svg')
+       .attr('width', 700)
+       .attr('height', 100)
+       .append('g')
+       .attr('transform', 'translate(100,50)')
+       .call(sliderStart);
+
+    d3.select('#slider')
+        .append('svg')
+        .attr('width', 700)
+        .attr('height', 100)
+        .append('g')
+        .attr('transform', 'translate(100,50)')
+        .call(sliderEnd);
 /*
   svg.selectAll("Fall")
      .data(data)
