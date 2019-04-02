@@ -8,18 +8,21 @@ $(function() {
     console.log(data);
 
     // Call our visualize function:
-    visualize(data);
+    visualize(data, "Engineering", "#chart-engineering");
+    visualize(data, "LAS", "#chart-las");
+    visualize(data, "ACES", "#chart-aces");
+    visualize(data, "Applied Health Sciences", "#chart-ahs");
   });
 });
 
 
-var visualize = function(data) {
+var visualize = function(data, college, id) {
   // Boilerplate:
   var margin = { top: 50, right: 50, bottom: 50, left: 50 },
-     width = 960 - margin.left - margin.right,
-     height = 500 - margin.top - margin.bottom;
+     width = 280 - margin.left - margin.right,
+     height = 600 - margin.top - margin.bottom;
       
-  var svg = d3.select("#chart")
+  var svg = d3.select(id)
     .append("svg")
     .attr("width", width + margin.left + margin.right)
     .attr("height", height + margin.top + margin.bottom)
@@ -32,24 +35,23 @@ var visualize = function(data) {
   var startDate = 1980;
   var endDate = 2018;
 
-  var xScale = d3.scaleLinear().domain([startDate, endDate]).range([0, width / 3]);
+  var xScale = d3.scaleLinear().domain([startDate, endDate]).range([0, width]);
 
-  var yScale = d3.scaleLinear().domain([0, 2000]).range([height, 0]);
+  var yScale = d3.scaleLinear().domain([0, 1800]).range([height, 0]);
 
   var yAxisLeftVariable = d3.axisLeft().scale(yScale);
   var yAxisRightVariable = d3.axisRight().scale(yScale);
 
   var majorToCounts = new Map();
   data.forEach(function (d, i) {
-    if (d["Fall"] == startDate) {
-      majorToCounts.set(d["Major Name"], [d["Total"]]);
-    } else if (majorToCounts.has(d["Major Name"]) && d["Fall"] == endDate) {
-      majorToCounts.get(d["Major Name"]).push(d["Total"]);
-      console.log(d["Fall"]);
+    if (d["College"] == college) {
+      if (d["Fall"] == startDate) {
+        majorToCounts.set(d["Major Name"], [d["Total"]]);
+      } else if (majorToCounts.has(d["Major Name"]) && d["Fall"] == endDate) {
+        majorToCounts.get(d["Major Name"]).push(d["Total"]);
+      }
     }
   });
-
-  console.log(majorToCounts);
 
   majorToCounts.forEach((value,key,map)=>
   {
@@ -64,7 +66,7 @@ var visualize = function(data) {
 
   svg.append("g")
     .attr("class", "y axis")
-    .attr("transform", "translate( " + (width / 3) + ", 0 )")
+    .attr("transform", "translate( " + (width) + ", 0 )")
     .call(yAxisRightVariable);
 
   majorToCounts.forEach((value,key,map)=>
