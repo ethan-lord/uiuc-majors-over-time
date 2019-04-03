@@ -37,10 +37,41 @@ var visualize = function(data, college, id) {
 
   var xScale = d3.scaleLinear().domain([startDate, endDate]).range([0, width]);
 
-  var yScale = d3.scaleLinear().domain([0, 1800]).range([height, 0]);
+  var yScale = d3.scaleLinear().domain([0, 1700]).range([height, 50]);
 
   var yAxisLeftVariable = d3.axisLeft().scale(yScale);
   var yAxisRightVariable = d3.axisRight().scale(yScale);
+
+  // Major label
+  var label = svg.append("text");
+  label.attr("x", 50).attr("y", 50).attr("text-anchor", "middle").attr("font-size","14px");
+
+  // College label
+  svg.append("text")
+     .attr("x", xScale((startDate + endDate) / 2))
+     .attr("y", 0)
+     .attr("text-anchor", "middle")
+     .attr("font-size", "18px")
+     .text(college);
+
+  svg.append("text")
+     .attr("x", xScale(startDate))
+     .attr("y", 25)
+     .attr("text-anchor", "middle")
+     .attr("font-size", "14px")
+     .text(startDate);
+
+  svg.append("text")
+     .attr("x", xScale(endDate))
+     .attr("y", 25)
+     .attr("text-anchor", "middle")
+     .attr("font-size", "14px")
+     .text(endDate);
+
+  var labelLine = svg.append("line");
+  labelLine.attr("opacity", 0)
+           .attr("stroke", "black")
+           .attr("stroke-width", 1);
 
   // {Key: Major name, Value: [startDateTotal, endDateTotal]}
   var majorToCounts = new Map();
@@ -72,7 +103,7 @@ var visualize = function(data, college, id) {
 
   majorToCounts.forEach((value,key,map)=>
   {
-    svg.append("line")
+    svg.append("line") // TODO: Work out how to filter line selection
         .attr("x1", function (d, i) {
            return xScale( startDate );
          })
@@ -85,8 +116,58 @@ var visualize = function(data, college, id) {
          .attr("y2", function (d, i) {
            return yScale( majorToCounts.get(key)[1] );
          })
-         .attr("stroke-width", 1)
-         .attr("stroke", "black");
+         .attr("stroke-width", 2)
+         .attr("stroke", "black")
+         .attr("opacity", 0.3)
+         .on("mouseover", function(d) {
+            /*d3.selectAll("line")
+              .transition()
+              .attr("duration", 200)
+              .attr("opacity", 0.2);*/
+            d3.select(this)
+              .transition()
+              .attr("duration", 200)
+              .attr("opacity", 0.8)
+              .attr("stroke-width", 3);
+
+            var xCenter = xScale((startDate + endDate) / 2);
+            var yCenter = (yScale( majorToCounts.get(key)[0] ) + yScale( majorToCounts.get(key)[1] )) / 2;
+
+            label.text(key);
+            label.attr("x", xCenter)
+                 .attr("y", yCenter - 65);
+
+            labelLine.attr("opacity", 0.8)
+                     .attr("x1", xCenter)
+                     .attr("x2", xCenter)
+                     .attr("y1", yCenter)
+                     .attr("y2", yCenter - 55);
+
+            labelLine.transition()
+              .attr("duration", 200)
+              .attr("opacity", 0.8)
+              .attr("stroke-width", 1);
+         })
+         .on("mouseout", function(d) {
+            /*d3.selectAll("line")
+              .transition()
+              .attr("duration", 200)
+              .attr("opacity", 0.8)
+              .attr("stroke-width", 2);*/
+
+            d3.select(this)
+              .transition()
+              .attr("duration", 200)
+              .attr("opacity", 0.3)
+              .attr("stroke-width", 2);
+
+            label.text("");
+
+            labelLine.transition()
+              .attr("duration", 200)
+              .attr("opacity", 0)
+              .attr("stroke-width", 1);
+         });
   });
 
 
