@@ -1,8 +1,9 @@
 <!doctype html>
 <html>
-  <head>
-    <title>Base template for simple d3.js visualizations</title>
 
+  <head>
+    <title>UIUC Majors Over Time</title>
+    <link rel="stylesheet" type = "text/css" href="style.css" />
 
     <!-- Bootstrap CSS -->
     <link rel="stylesheet" href="https://stackpath.bootstrapcdn.com/bootstrap/4.3.1/css/bootstrap.min.css" integrity="sha384-ggOyR0iXCbMQv3Xipma34MD+dH/1fQ784/j6cY/iJTQUOhcWr7x9JvoRxT2MZw1T" crossorigin="anonymous">
@@ -18,26 +19,31 @@
     <!-- Our visualization code -->
     <script src="visualization.js"></script>
 
-    <link rel="stylesheet" type = "text/css" href="style.css" />
+
   </head>
   <body>
-    <div class="container-fluid">
-      <div class = "charts">
-      <!-- Our d3.js visualization will appear in #chart -->
-        <div id="chart-engineering" style="display: inline-block"></div>
-        <div id="chart-las" style="display: inline-block"></div>
-        <div id="chart-aces" style="display: inline-block"></div>
-        <div id="chart-ahs" style="display: inline-block"></div>
-        <div id="chart-business" style="display: inline-block"></div>
-        <div id="chart-education" style="display: inline-block"></div>
-        <div id="chart-fine-applied-arts" style="display: inline-block"></div>
-        <div id="chart-media" style="display: inline-block"></div>
-      </div>
-    <div class = "slider">
-        <div id= "slider"></div>
-    </div>
+    <div id="bg-left"></div>
+      <div id="bg-right"></div>
+      <div class = "jumbotron">
+          <h1>UIUC Major Populations Over Time</h1>
 
-    </div>
+      </div>
+      <div class="container-fluid">
+        <div class = "charts">
+        <!-- Our d3.js visualization will appear in #chart -->
+          <div id="chart-engineering" style="display: inline-block"></div>
+          <div id="chart-las" style="display: inline-block"></div>
+          <div id="chart-aces" style="display: inline-block"></div>
+          <div id="chart-ahs" style="display: inline-block"></div>
+          <div id="chart-business" style="display: inline-block"></div>
+          <div id="chart-education" style="display: inline-block"></div>
+          <div id="chart-fine-applied-arts" style="display: inline-block"></div>
+          <div id="chart-media" style="display: inline-block"></div>
+        </div>
+        <div class = "slider">
+            <div id= "slider"></div>
+        </div>
+      </div>
   </body>
 
 </html>
