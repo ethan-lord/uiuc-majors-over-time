@@ -115,7 +115,28 @@ var visualize = function(data, college, id, startDate, endDate, replace = true) 
 
   majorToCounts.forEach((value,key,map)=>
   {
-    svg.append("line") // TODO: Work out how to filter line selection
+    var currLine = svg.append("line")
+                      .attr("class", "slope-line")
+                      .attr("id", key)
+                      .attr("x1", function (d, i) {
+                         return xScale( startDate );
+                       })
+                       .attr("y1", function (d, i) {
+                         return yScale( majorToCounts.get(key)[0] );
+                       })
+                       .attr("x2", function (d, i) {
+                         return xScale( endDate );
+                       })
+                       .attr("y2", function (d, i) {
+                         return yScale( majorToCounts.get(key)[1] );
+                       })
+                       .attr("stroke-width", 2)
+                       .attr("stroke", "black")
+                       .attr("opacity", 0.8);
+
+    svg.append("line")
+        .attr("class", "slope-line-hitbox")
+        .attr("id", key)
         .attr("x1", function (d, i) {
            return xScale( startDate );
          })
@@ -128,16 +149,15 @@ var visualize = function(data, college, id, startDate, endDate, replace = true) 
          .attr("y2", function (d, i) {
            return yScale( majorToCounts.get(key)[1] );
          })
-         .attr("stroke-width", 2)
+         .attr("stroke-width", 8)
          .attr("stroke", "black")
-         .attr("opacity", 0.3)
+         .attr("opacity", 0)
          .on("mouseover", function(d) {
-            /*d3.selectAll("line")
+            d3.selectAll(".slope-line")
               .transition()
               .attr("duration", 200)
-              .attr("opacity", 0.2);*/
-            d3.select(this)
-              .transition()
+              .attr("opacity", 0.2);
+            currLine.transition()
               .attr("duration", 200)
               .attr("opacity", 0.8)
               .attr("stroke-width", 3);
@@ -161,16 +181,10 @@ var visualize = function(data, college, id, startDate, endDate, replace = true) 
               .attr("stroke-width", 1);
          })
          .on("mouseout", function(d) {
-            /*d3.selectAll("line")
+            d3.selectAll(".slope-line")
               .transition()
               .attr("duration", 200)
               .attr("opacity", 0.8)
-              .attr("stroke-width", 2);*/
-
-            d3.select(this)
-              .transition()
-              .attr("duration", 200)
-              .attr("opacity", 0.3)
               .attr("stroke-width", 2);
 
             label.text("");
