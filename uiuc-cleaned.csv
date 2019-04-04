@@ -180,7 +180,6 @@ Fall,Major Name,College,Total,Male,Female,Illinois
 1980,Theatre,Business,122,56.0,66.0,38.0
 1980,Theatre,Fine and Applied Arts,29,17.0,12.0,3.0
 1980,Theoretical & Applied Mechans,Engineering,50,46.0,4.0,34.0
-1980,UNASSIGNED,Business,611,341.0,270.0,20.0
 1980,UNCLASS,Fine and Applied Arts,65,22.0,43.0,10.0
 1980,UNCLASS,LAS,214,82.0,132.0,38.0
 1980,Urban Planning,Fine and Applied Arts,92,49.0,43.0,29.0
@@ -375,7 +374,6 @@ Fall,Major Name,College,Total,Male,Female,Illinois
 1981,Theatre,Business,129,63.0,66.0,39.0
 1981,Theatre,Fine and Applied Arts,26,15.0,11.0,5.0
 1981,Theoretical & Applied Mechans,Engineering,50,45.0,5.0,31.0
-1981,UNASSIGNED,Business,669,344.0,325.0,22.0
 1981,UNCLASS,Fine and Applied Arts,71,29.0,42.0,13.0
 1981,UNCLASS,LAS,215,69.0,146.0,42.0
 1981,Urban Planning,Fine and Applied Arts,109,57.0,52.0,32.0
@@ -571,7 +569,6 @@ Fall,Major Name,College,Total,Male,Female,Illinois
 1982,Theatre,Fine and Applied Arts,22,13.0,9.0,4.0
 1982,Theoretical & Applied Mechans,Engineering,52,48.0,4.0,33.0
 1982,UG NON-DEG,Education,18,0.0,18.0,7.0
-1982,UNASSIGNED,Business,731,355.0,376.0,23.0
 1982,UNCLASS,Fine and Applied Arts,52,24.0,28.0,9.0
 1982,UNCLASS,LAS,187,76.0,111.0,42.0
 1982,Urban Planning,Fine and Applied Arts,134,76.0,58.0,28.0
@@ -774,7 +771,6 @@ Fall,Major Name,College,Total,Male,Female,Illinois
 1983,Theatre,Fine and Applied Arts,21,12.0,9.0,1.0
 1983,Theoretical & Applied Mechans,Engineering,46,42.0,4.0,30.0
 1983,UG NON-DEG,Education,28,11.0,17.0,12.0
-1983,UNASSIGNED,Business,712,315.0,397.0,29.0
 1983,UNCLASS,Fine and Applied Arts,60,21.0,39.0,4.0
 1983,UNCLASS,LAS,180,76.0,104.0,33.0
 1983,Urban Planning,Fine and Applied Arts,143,82.0,61.0,25.0
@@ -976,7 +972,6 @@ Fall,Major Name,College,Total,Male,Female,Illinois
 1984,Theatre,Fine and Applied Arts,29,16.0,13.0,3.0
 1984,Theoretical & Applied Mechans,Engineering,50,48.0,2.0,30.0
 1984,UG NON-DEG,Education,12,2.0,10.0,0.0
-1984,UNASSIGNED,Business,601,258.0,343.0,25.0
 1984,UNCLASS,Fine and Applied Arts,48,12.0,36.0,10.0
 1984,UNCLASS,LAS,185,72.0,113.0,40.0
 1984,UNCM FR&SO,LAS,88,45.0,43.0,3.0
@@ -1180,7 +1175,6 @@ Fall,Major Name,College,Total,Male,Female,Illinois
 1985,Theatre,Fine and Applied Arts,38,23.0,15.0,2.0
 1985,Theoretical & Applied Mechans,Engineering,50,46.0,4.0,28.0
 1985,UG NON-DEG,Education,20,5.0,15.0,8.0
-1985,UNASSIGNED,Business,602,265.0,337.0,24.0
 1985,UNCLASS,Fine and Applied Arts,48,18.0,30.0,10.0
 1985,UNCLASS,LAS,188,82.0,106.0,51.0
 1985,UNCM FR&SO,LAS,165,77.0,88.0,4.0
@@ -1381,7 +1375,6 @@ Fall,Major Name,College,Total,Male,Female,Illinois
 1986,Theatre,Fine and Applied Arts,42,21.0,21.0,4.0
 1986,Theoretical & Applied Mechans,Engineering,45,41.0,4.0,26.0
 1986,UG NON-DEG,Education,15,4.0,11.0,0.0
-1986,UNASSIGNED,Business,651,313.0,338.0,26.0
 1986,UNCLASS,Fine and Applied Arts,60,19.0,41.0,13.0
 1986,UNCLASS,LAS,180,77.0,103.0,49.0
 1986,UNCM FR&SO,LAS,173,85.0,88.0,9.0
@@ -1582,8 +1575,6 @@ Fall,Major Name,College,Total,Male,Female,Illinois
 1987,Theatre,Fine and Applied Arts,47,22.0,25.0,3.0
 1987,Theoretical & Applied Mechans,Engineering,58,53.0,5.0,33.0
 1987,UG NON-DEG,Education,10,6.0,4.0,3.0
-1987,UNASSIGNED,Business,691,359.0,332.0,43.0
-1987,UNASSIGNED,Graduate,1,1.0,0.0,1.0
 1987,UNCLASS,Fine and Applied Arts,50,14.0,36.0,8.0
 1987,UNCLASS,LAS,157,64.0,93.0,49.0
 1987,UNCM FR&SO,LAS,149,76.0,73.0,8.0
@@ -1783,7 +1774,6 @@ Fall,Major Name,College,Total,Male,Female,Illinois
 1988,Theatre,Fine and Applied Arts,29,13.0,16.0,1.0
 1988,Theoretical & Applied Mechans,Engineering,57,52.0,5.0,38.0
 1988,UG NON-DEG,Education,8,2.0,6.0,1.0
-1988,UNASSIGNED,Business,682,379.0,303.0,52.0
 1988,UNCLASS,Fine and Applied Arts,59,29.0,30.0,14.0
 1988,UNCLASS,LAS,190,92.0,98.0,62.0
 1988,UNCM FR&SO,LAS,233,112.0,121.0,4.0
@@ -1986,7 +1976,6 @@ Fall,Major Name,College,Total,Male,Female,Illinois
 1989,Theatre,Fine and Applied Arts,31,13.0,18.0,2.0
 1989,Theoretical & Applied Mechans,Engineering,63,58.0,5.0,45.0
 1989,UG NON-DEG,Education,1,0.0,1.0,0.0
-1989,UNASSIGNED,Business,623,345.0,278.0,77.0
 1989,UNCLASS,Fine and Applied Arts,48,20.0,28.0,9.0
 1989,UNCLASS,LAS,200,89.0,111.0,71.0
 1989,UNCM FR&SO,LAS,288,134.0,154.0,9.0
@@ -2187,7 +2176,6 @@ Fall,Major Name,College,Total,Male,Female,Illinois
 1990,Theatre,Fine and Applied Arts,30,16.0,14.0,4.0
 1990,Theoretical & Applied Mechans,Engineering,57,54.0,3.0,46.0
 1990,UG NON-DEG,Education,6,2.0,4.0,2.0
-1990,UNASSIGNED,Business,576,322.0,254.0,67.0
 1990,UNCLASS,Fine and Applied Arts,48,20.0,28.0,8.0
 1990,UNCLASS,LAS,225,105.0,120.0,97.0
 1990,UNCM FR&SO,LAS,298,139.0,159.0,12.0
@@ -2386,7 +2374,6 @@ Fall,Major Name,College,Total,Male,Female,Illinois
 1991,Theatre,Fine and Applied Arts,24,15.0,9.0,3.0
 1991,Theoretical & Applied Mechans,Engineering,52,50.0,2.0,40.0
 1991,UG NON-DEG,Education,5,2.0,3.0,0.0
-1991,UNASSIGNED,Business,599,337.0,262.0,88.0
 1991,UNCLASS,Fine and Applied Arts,50,23.0,27.0,15.0
 1991,UNCLASS,LAS,210,98.0,112.0,96.0
 1991,UNCM FR&SO,LAS,259,120.0,139.0,7.0
@@ -2582,7 +2569,6 @@ Fall,Major Name,College,Total,Male,Female,Illinois
 1992,Theatre,Fine and Applied Arts,30,17.0,13.0,3.0
 1992,Theoretical & Applied Mechans,Engineering,55,51.0,4.0,42.0
 1992,UG NON-DEG,Education,4,1.0,3.0,0.0
-1992,UNASSIGNED,Business,523,296.0,227.0,101.0
 1992,UNCLASS,Fine and Applied Arts,55,26.0,29.0,18.0
 1992,UNCLASS,LAS,226,109.0,117.0,117.0
 1992,UNCM FR&SO,LAS,220,105.0,115.0,5.0
@@ -2778,7 +2764,6 @@ Fall,Major Name,College,Total,Male,Female,Illinois
 1993,Theatre,Fine and Applied Arts,33,21.0,12.0,3.0
 1993,Theoretical & Applied Mechans,Engineering,52,49.0,3.0,43.0
 1993,UG NON-DEG,Education,1,1.0,0.0,0.0
-1993,UNASSIGNED,Business,592,331.0,261.0,97.0
 1993,UNCLASS,Fine and Applied Arts,52,18.0,34.0,21.0
 1993,UNCLASS,LAS,212,112.0,100.0,119.0
 1993,UNCM FR&SO,LAS,213,101.0,112.0,9.0
@@ -2978,7 +2963,6 @@ Fall,Major Name,College,Total,Male,Female,Illinois
 1994,Theatre,Business,137,54.0,83.0,68.0
 1994,Theatre,Fine and Applied Arts,39,24.0,15.0,5.0
 1994,Theoretical & Applied Mechans,Engineering,42,38.0,4.0,34.0
-1994,UNASSIGNED,Business,630,327.0,303.0,89.0
 1994,UNCLASS,Fine and Applied Arts,46,16.0,30.0,23.0
 1994,UNCLASS,LAS,209,96.0,113.0,126.0
 1994,UNCM FR&SO,LAS,224,98.0,126.0,6.0
@@ -3176,7 +3160,6 @@ Fall,Major Name,College,Total,Male,Female,Illinois
 1995,Theatre,Fine and Applied Arts,27,16.0,11.0,5.0
 1995,Theoretical & Applied Mechans,Engineering,37,33.0,4.0,31.0
 1995,UG NON-DEG,Education,2,0.0,2.0,1.0
-1995,UNASSIGNED,Business,564,312.0,252.0,75.0
 1995,UNCLASS,Fine and Applied Arts,50,21.0,29.0,24.0
 1995,UNCLASS,LAS,246,112.0,134.0,143.0
 1995,UNCM FR&SO,LAS,202,101.0,101.0,4.0
@@ -3375,7 +3358,6 @@ Fall,Major Name,College,Total,Male,Female,Illinois
 1996,Theatre,Fine and Applied Arts,29,16.0,13.0,7.0
 1996,Theoretical & Applied Mechans,Engineering,41,35.0,6.0,37.0
 1996,UG NON-DEG,Education,2,0.0,2.0,2.0
-1996,UNASSIGNED,Business,567,330.0,237.0,79.0
 1996,UNCLASS,Fine and Applied Arts,38,20.0,18.0,20.0
 1996,UNCLASS,LAS,262,124.0,138.0,173.0
 1996,UNCM FR&SO,LAS,178,83.0,95.0,7.0
@@ -3586,7 +3568,6 @@ Fall,Major Name,College,Total,Male,Female,Illinois
 1997,Theatre,Fine and Applied Arts,37,16.0,21.0,9.0
 1997,Theoretical & Applied Mechans,Engineering,44,38.0,6.0,37.0
 1997,UG NON-DEG,Education,1,0.0,1.0,0.0
-1997,UNASSIGNED,Business,598,338.0,260.0,91.0
 1997,UNCLASS,Fine and Applied Arts,40,17.0,23.0,26.0
 1997,UNCLASS,LAS,290,121.0,169.0,195.0
 1997,UNCM FR&SO,LAS,188,79.0,109.0,6.0
@@ -3795,8 +3776,6 @@ Fall,Major Name,College,Total,Male,Female,Illinois
 1998,Theatre,Fine and Applied Arts,42,19.0,23.0,5.0
 1998,Theoretical & Applied Mechans,Engineering,56,47.0,9.0,47.0
 1998,UG NON-DEG,Education,1,0.0,1.0,0.0
-1998,UNASSIGNED,Business,560,299.0,261.0,34.0
-1998,UNASSIGNED,Graduate,1,0.0,1.0,0.0
 1998,UNCLASS,Fine and Applied Arts,42,19.0,23.0,28.0
 1998,UNCLASS,LAS,203,99.0,104.0,144.0
 1998,UNCM FR&SO,LAS,170,79.0,91.0,6.0
@@ -3998,7 +3977,6 @@ Fall,Major Name,College,Total,Male,Female,Illinois
 1999,Theatre,Fine and Applied Arts,45,18.0,27.0,8.0
 1999,Theoretical & Applied Mechans,Engineering,61,53.0,8.0,54.0
 1999,UG NON-DEG,Education,2,0.0,2.0,0.0
-1999,UNASSIGNED,Business,577,302.0,275.0,22.0
 1999,UNCLASS,Fine and Applied Arts,35,16.0,19.0,16.0
 1999,UNCLASS,LAS,200,88.0,112.0,124.0
 1999,UNCM FR&SO,LAS,181,89.0,92.0,8.0
@@ -4190,7 +4168,6 @@ Fall,Major Name,College,Total,Male,Female,Illinois
 2000,Theatre,Fine and Applied Arts,49,22.0,27.0,4.0
 2000,Theoretical & Applied Mechans,Engineering,58,52.0,6.0,52.0
 2000,UG NON-DEG,Education,2,0.0,2.0,1.0
-2000,UNASSIGNED,Business,535,287.0,248.0,32.0
 2000,UNCLASS,Fine and Applied Arts,31,13.0,18.0,19.0
 2000,UNCLASS,LAS,165,62.0,103.0,97.0
 2000,UNCM FR&SO,LAS,190,94.0,96.0,7.0
@@ -4379,7 +4356,6 @@ Fall,Major Name,College,Total,Male,Female,Illinois
 2001,Theatre,Fine and Applied Arts,43,21.0,22.0,4.0
 2001,Theoretical & Applied Mechans,Engineering,50,46.0,4.0,44.0
 2001,UG NON-DEG,Education,1,0.0,1.0,0.0
-2001,UNASSIGNED,Business,518,286.0,232.0,46.0
 2001,UNCLASS,Fine and Applied Arts,35,13.0,22.0,20.0
 2001,UNCLASS,LAS,175,83.0,92.0,119.0
 2001,UNCM FR&SO,LAS,194,100.0,94.0,11.0
@@ -4568,7 +4544,6 @@ Fall,Major Name,College,Total,Male,Female,Illinois
 2002,Theatre,Fine and Applied Arts,46,21.0,25.0,4.0
 2002,Theoretical & Applied Mechans,Engineering,60,54.0,6.0,50.0
 2002,UG NON-DEG,Education,1,0.0,1.0,1.0
-2002,UNASSIGNED,Business,455,266.0,189.0,42.0
 2002,UNCLASS,Fine and Applied Arts,32,12.0,20.0,24.0
 2002,UNCLASS,LAS,170,67.0,103.0,100.0
 2002,UNCM FR&SO,LAS,180,89.0,91.0,9.0
@@ -4754,7 +4729,6 @@ Fall,Major Name,College,Total,Male,Female,Illinois
 2003,Theatre,Fine and Applied Arts,42,20.0,22.0,3.0
 2003,Theoretical & Applied Mechans,Engineering,66,59.0,7.0,55.0
 2003,UG NON-DEG,Education,1,0.0,1.0,0.0
-2003,UNASSIGNED,Business,432,260.0,172.0,49.0
 2003,UNCLASS,Fine and Applied Arts,29,12.0,17.0,17.0
 2003,UNCLASS,LAS,142,62.0,80.0,79.0
 2003,UNCM FR&SO,LAS,196,92.0,104.0,13.0
