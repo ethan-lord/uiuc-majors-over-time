@@ -203,8 +203,8 @@ var visualize = function(data, college, id, startDate, endDate, replace = true) 
 
 
 var sliders = function(data){
-  var startDate = new Date(1980, 1, 1);
-  var endDate = new Date(2018, 1, 1);
+  var startDate = 1980;
+  var endDate = 2018;
 
   var yearRange = d3.range(0, 39).map(function(d) {
       if((1980 + d) % 5 == 0 || (1980 + d) == 2018){
@@ -223,8 +223,8 @@ var sliders = function(data){
     .tickFormat(d3.timeFormat('%Y'))
     .default([new Date(1980, 1, 1), new Date(2018, 1, 1)])
     .on('onchange', val => {
-      startDate = val.map(d3.timeFormat('%Y'))[0];
-      endDate = val.map(d3.timeFormat('%Y'))[1];
+      startDate = Number(val.map(d3.timeFormat('%Y'))[0]);
+      endDate = Number(val.map(d3.timeFormat('%Y'))[1]);
 
       visualize(data, "Engineering", "#chart-engineering", startDate, endDate);
       visualize(data, "LAS", "#chart-las", startDate, endDate);
