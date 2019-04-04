@@ -59,6 +59,7 @@ var visualize = function(data, college, id, startDate, endDate, replace = true) 
 
   // College label
   svg.append("text")
+     .attr("class", "college-label")
      .attr("x", xScale((startDate + endDate) / 2))
      .attr("y", 0)
      .attr("text-anchor", "middle")
