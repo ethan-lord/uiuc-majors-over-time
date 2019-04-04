@@ -53,6 +53,8 @@ var visualize = function(data, college, id, startDate, endDate, replace = true) 
   var yAxisLeftVariable = d3.axisLeft().scale(yScale);
   var yAxisRightVariable = d3.axisRight().scale(yScale);
 
+  
+
   // Major label
   var label = svg.append("text");
   label.attr("x", 50).attr("y", 50).attr("text-anchor", "middle").attr("font-size","14px");
@@ -84,8 +86,17 @@ var visualize = function(data, college, id, startDate, endDate, replace = true) 
 
   var labelLine = svg.append("line");
   labelLine.attr("opacity", 0)
-           .attr("stroke", "black")
+           .attr("stroke", "white")
            .attr("stroke-width", 1);
+
+
+  var tip = d3.tip().attr('class', 'd3-tip').html(function(d) {
+      return d[0] + "<br>" +
+             d[1][0] + " &#8594; " + d[1][1] + " students" + "<br>" +
+             (Math.round(100 * d[1][2] / d[1][1] * 10) / 10) + "% Male in " + endDate + "<br>" +
+             (Math.round(100 * d[1][3] / d[1][1] * 10) / 10) + "% in-state in " + endDate;
+    });
+  svg.call(tip);
 
   // {Key: Major name, Value: [startDateTotal, endDateTotal]}
   var majorToCounts = new Map();
@@ -95,6 +106,8 @@ var visualize = function(data, college, id, startDate, endDate, replace = true) 
         majorToCounts.set(d["Major Name"], [d["Total"]]);
       } else if (majorToCounts.has(d["Major Name"]) && d["Fall"] == endDate) {
         majorToCounts.get(d["Major Name"]).push(d["Total"]);
+        majorToCounts.get(d["Major Name"]).push(d["Male"]);
+        majorToCounts.get(d["Major Name"]).push(d["Illinois"]);
       }
     }
   });
@@ -117,6 +130,9 @@ var visualize = function(data, college, id, startDate, endDate, replace = true) 
 
   majorToCounts.forEach((value,key,map)=>
   {
+    var xCenter = xScale((startDate + endDate) / 2);
+    var yCenter = (yScale( majorToCounts.get(key)[0] ) + yScale( majorToCounts.get(key)[1] )) / 2;
+
     var currLine = svg.append("line")
                       .attr("class", "slope-line")
                       .attr("id", key)
@@ -164,23 +180,9 @@ var visualize = function(data, college, id, startDate, endDate, replace = true) 
               .attr("opacity", 0.8)
               .attr("stroke-width", 3);
 
-            var xCenter = xScale((startDate + endDate) / 2);
-            var yCenter = (yScale( majorToCounts.get(key)[0] ) + yScale( majorToCounts.get(key)[1] )) / 2;
-
-            label.text(key);
-            label.attr("x", xCenter)
-                 .attr("y", yCenter - 65);
-
-            labelLine.attr("opacity", 0.8)
-                     .attr("x1", xCenter)
-                     .attr("x2", xCenter)
-                     .attr("y1", yCenter)
-                     .attr("y2", yCenter - 55);
-
-            labelLine.transition()
-              .attr("duration", 200)
-              .attr("opacity", 0.8)
-              .attr("stroke-width", 1);
+            tip.direction('n');
+            tip.offset( [-(Math.min(yScale( majorToCounts.get(key)[1] ), yScale( majorToCounts.get(key)[0] )) - yCenter) - 20, 0] );
+            tip.show([key, value], this);
          })
          .on("mouseout", function(d) {
             d3.selectAll(".slope-line")
@@ -189,12 +191,7 @@ var visualize = function(data, college, id, startDate, endDate, replace = true) 
               .attr("opacity", 0.8)
               .attr("stroke-width", 2);
 
-            label.text("");
-
-            labelLine.transition()
-              .attr("duration", 200)
-              .attr("opacity", 0)
-              .attr("stroke-width", 1);
+            tip.hide(key, this);
          });
   });
 
@@ -264,49 +261,3 @@ var sliders = function(data){
        .call(sliderRange);
 
 }
-/*
-  svg.selectAll("Fall")
-     .data(data)
-     .enter()
-     .append("line")
-     .attr("x1", function (d, i) {
-       return xScale( startDate );
-     })
-     .attr("y1", function (d, i) {
-       return yScale( 500 );
-     })
-     .attr("x2", function (d, i) {
-       return xScale( endDate );
-     })
-     .attr("y2", function (d, i) {
-       return yScale( 1500 );
-     })
-     .attr("stroke-width", 1)
-     .attr("stroke", "black");
-
-  svg.selectAll("Fall")
-     .data(data)
-     .enter()
-     .append("circle")
-     .attr("r", 3)
-     .attr("fill", "black")
-     .attr("cx", function (d, i) {
-       return xScale( startDate );
-     })
-     .attr("cy", function (d, i) {
-       return yScale( 500 );
-     });
-
-  svg.selectAll("Fall")
-     .data(data)
-     .enter()
-     .append("circle")
-     .attr("r", 3)
-     .attr("fill", "black")
-     .attr("cx", function (d, i) {
-       return xScale( endDate );
-     })
-     .attr("cy", function (d, i) {
-       return yScale( 1500 );
-     });
-*/
