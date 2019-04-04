@@ -8,20 +8,28 @@ $(function() {
     console.log(data);
 
     // Call our visualize function:
-    visualize(data, "Engineering", "#chart-engineering");
-    visualize(data, "LAS", "#chart-las");
-    visualize(data, "ACES", "#chart-aces");
-    visualize(data, "Applied Health Sciences", "#chart-ahs");
+    visualize(data, "Engineering", "#chart-engineering", 1980, 2018);
+    visualize(data, "LAS", "#chart-las", 1980, 2018);
+    visualize(data, "ACES", "#chart-aces", 1980, 2018);
+    visualize(data, "Applied Health Sciences", "#chart-ahs", 1980, 2018);
+    sliders(data);
   });
 });
 
+var remove = function(){
+    console.log("Remove")
 
-var visualize = function(data, college, id) {
+
+}
+
+var visualize = function(data, college, id, startDate, endDate, replace = false) {
   // Boilerplate:
+
   var margin = { top: 50, right: 50, bottom: 50, left: 50 },
      width = 280 - margin.left - margin.right,
      height = 600 - margin.top - margin.bottom;
-      
+
+
   var svg = d3.select(id)
     .append("svg")
     .attr("width", width + margin.left + margin.right)
@@ -30,10 +38,17 @@ var visualize = function(data, college, id) {
     .style("height", height + margin.top + margin.bottom)
     .append("g")
     .attr("transform", "translate(" + margin.left + "," + margin.top + ")");
+    // if(replace == true){
+    //   d3.select("#chart-engineering").remove();
+    //   d3.select("#chart-las").remove();
+    //   d3.select("#chart-aces").remove();
+    //   d3.select("#chart-ahs").remove();
+    // }
+
 
   // Visualization Code:
-  var startDate = 1980;
-  var endDate = 2018;
+  // var startDate = 1980;
+  // var endDate = 2018;
 
   var xScale = d3.scaleLinear().domain([startDate, endDate]).range([0, width]);
 
@@ -89,6 +104,13 @@ var visualize = function(data, college, id) {
          .attr("stroke", "black");
   });
 
+};
+
+
+
+var sliders = function(data){
+  var startDate = new Date(1980, 1, 1);
+  var endDate = new Date(2018, 1, 1);
 
   var yearRange = d3.range(0, 39).map(function(d) {
       if((1980 + d) % 5 == 0 || (1980 + d) == 2018){
@@ -105,7 +127,14 @@ var visualize = function(data, college, id) {
     .displayValue(true)
     .tickFormat(d3.timeFormat('%Y'))
     .on('onchange', val => {
+
       startDate = val;
+      console.log(startDate.getFullYear());
+
+      visualize(data, "Engineering", "#chart-engineering", startDate.getFullYear(), endDate.getFullYear(), true);
+      visualize(data, "LAS", "#chart-las", startDate.getFullYear(), endDate.getFullYear(), false);
+      visualize(data, "ACES", "#chart-aces", startDate.getFullYear(), endDate.getFullYear(), false);
+      visualize(data, "Applied Health Sciences", "#chart-ahs", startDate.getFullYear(), endDate.getFullYear(), false);
     })
     .default(new Date(1980, 1, 1));
 
@@ -118,7 +147,16 @@ var visualize = function(data, college, id) {
     .displayValue(true)
     .tickFormat(d3.timeFormat('%Y'))
     .on('onchange', val => {
+
       endDate = val;
+      console.log(endDate.getFullYear());
+
+      visualize(data, "Engineering", "#chart-engineering", startDate.getFullYear(), endDate.getFullYear(), true);
+      visualize(data, "LAS", "#chart-las", startDate.getFullYear(), endDate.getFullYear());
+      visualize(data, "ACES", "#chart-aces", startDate.getFullYear(), endDate.getFullYear());
+      visualize(data, "Applied Health Sciences", "#chart-ahs", startDate.getFullYear(), endDate.getFullYear());
+
+
     })
       .default(new Date(2018, 1, 1));
 
@@ -137,6 +175,7 @@ var visualize = function(data, college, id) {
         .append('g')
         .attr('transform', 'translate(100,50)')
         .call(sliderEnd);
+}
 /*
   svg.selectAll("Fall")
      .data(data)
@@ -183,4 +222,3 @@ var visualize = function(data, college, id) {
        return yScale( 1500 );
      });
 */
-};
