@@ -218,7 +218,7 @@ var sliders = function(data){
     .max(d3.max(yearRange))
     .step(1000 * 60 * 60 * 24 * 365)
     .width(500)
-    .fill('#2196f3')
+    .fill('#13294c')
     .displayValue(true)
     .tickFormat(d3.timeFormat('%Y'))
     .default([new Date(1980, 1, 1), new Date(2018, 1, 1)])
