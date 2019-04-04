@@ -91,15 +91,31 @@ text {
   display: block;
 }
 
+#slider-container {
+  text-align: center;
+}
+
 #slider {
   text-align: center;
   margin-bottom: 150px;
+  display: inline-block;
 }
 
-#slider #sliderYears{
+#sliderStartYear{
   color:#ecf0f1 !important;
   text-align: center !important;
+  margin-top: 32px;
   font-weight: bold;
+  display: inline-block;
+
+}
+
+#sliderEndYear{
+  color:#ecf0f1 !important;
+  text-align: center !important;
+  margin-top: 32px;
+  font-weight: bold;
+  display: inline-block;
 }
 
 

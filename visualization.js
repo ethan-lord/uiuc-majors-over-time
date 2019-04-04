@@ -224,7 +224,8 @@ var sliders = function(data){
     .on('onchange', val => {
       startDate = Number(val.map(d3.timeFormat('%Y'))[0]);
       endDate = Number(val.map(d3.timeFormat('%Y'))[1]);
-      d3.select('#sliderYears').text(val.map(d3.timeFormat('%Y')).join(' - '));
+      d3.select('#sliderStartYear').text(val.map(d3.timeFormat('%Y'))[0]);
+      d3.select('#sliderEndYear').text(val.map(d3.timeFormat('%Y'))[1]);
 
       d3.select('h1').text(
         "UIUC Undergraduate Majors from " + 
@@ -252,12 +253,9 @@ var sliders = function(data){
     //
     // gRange.call(sliderStart);
     //
-    d3.select('#sliderYears').text(
-      sliderRange
-        .value()
-        .map(d3.timeFormat('%Y'))
-        .join(' - ')
-    );
+
+    d3.select('#sliderStartYear').text(sliderRange.value().map(d3.timeFormat('%Y'))[0]);
+    d3.select('#sliderEndYear').text(sliderRange.value().map(d3.timeFormat('%Y'))[1]);
 
     d3.selectAll("h1").text (
       "UIUC Undergraduate Majors from " +
