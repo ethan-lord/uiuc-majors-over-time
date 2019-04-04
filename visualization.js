@@ -8,27 +8,28 @@ $(function() {
     console.log(data);
 
     // Call our visualize function:
-    visualize(data, "Engineering", "#chart-engineering", 1980, 2018);
-    visualize(data, "LAS", "#chart-las", 1980, 2018);
-    visualize(data, "ACES", "#chart-aces", 1980, 2018);
-    visualize(data, "Applied Health Sciences", "#chart-ahs", 1980, 2018);
+    visualize(data, "Engineering", "#chart-engineering", 1980, 2018, false);
+    visualize(data, "LAS", "#chart-las", 1980, 2018, false);
+    visualize(data, "ACES", "#chart-aces", 1980, 2018, false);
+    visualize(data, "Applied Health Sciences", "#chart-ahs", 1980, 2018, false);
+    visualize(data, "Business", "#chart-business", 1980, 2018, false);
+    visualize(data, "Education", "#chart-education", 1980, 2018, false);
+    visualize(data, "Fine and Applied Arts", "#chart-fine-applied-arts", 1980, 2018, false);
+    visualize(data, "Media", "#chart-media", 1980, 2018, false);
     sliders(data);
   });
 });
 
-var remove = function(){
-    console.log("Remove")
-
-
-}
-
-var visualize = function(data, college, id, startDate, endDate, replace = false) {
+var visualize = function(data, college, id, startDate, endDate, replace = true) {
   // Boilerplate:
 
   var margin = { top: 50, right: 50, bottom: 50, left: 50 },
      width = 280 - margin.left - margin.right,
      height = 600 - margin.top - margin.bottom;
 
+  if(replace){
+      d3.select(id).selectAll("svg").remove();
+  }
 
   var svg = d3.select(id)
     .append("svg")
@@ -38,12 +39,7 @@ var visualize = function(data, college, id, startDate, endDate, replace = false)
     .style("height", height + margin.top + margin.bottom)
     .append("g")
     .attr("transform", "translate(" + margin.left + "," + margin.top + ")");
-    // if(replace == true){
-    //   d3.select("#chart-engineering").remove();
-    //   d3.select("#chart-las").remove();
-    //   d3.select("#chart-aces").remove();
-    //   d3.select("#chart-ahs").remove();
-    // }
+
 
 
   // Visualization Code:
@@ -210,12 +206,15 @@ var sliders = function(data){
     .on('onchange', val => {
 
       startDate = val;
-      console.log(startDate.getFullYear());
 
-      visualize(data, "Engineering", "#chart-engineering", startDate.getFullYear(), endDate.getFullYear(), true);
-      visualize(data, "LAS", "#chart-las", startDate.getFullYear(), endDate.getFullYear(), false);
-      visualize(data, "ACES", "#chart-aces", startDate.getFullYear(), endDate.getFullYear(), false);
-      visualize(data, "Applied Health Sciences", "#chart-ahs", startDate.getFullYear(), endDate.getFullYear(), false);
+      visualize(data, "Engineering", "#chart-engineering", startDate.getFullYear(), endDate.getFullYear());
+      visualize(data, "LAS", "#chart-las", startDate.getFullYear(), endDate.getFullYear());
+      visualize(data, "ACES", "#chart-aces", startDate.getFullYear(), endDate.getFullYear());
+      visualize(data, "Applied Health Sciences", "#chart-ahs", startDate.getFullYear(), endDate.getFullYear());
+      visualize(data, "Business", "#chart-business", startDate.getFullYear(), endDate.getFullYear());
+      visualize(data, "Education", "#chart-education", startDate.getFullYear(), endDate.getFullYear());
+      visualize(data, "Fine and Applied Arts", "#chart-fine-applied-arts", startDate.getFullYear(), endDate.getFullYear());
+      visualize(data, "Media", "#chart-media", startDate.getFullYear(), endDate.getFullYear());
     })
     .default(new Date(1980, 1, 1));
 
@@ -230,13 +229,15 @@ var sliders = function(data){
     .on('onchange', val => {
 
       endDate = val;
-      console.log(endDate.getFullYear());
 
-      visualize(data, "Engineering", "#chart-engineering", startDate.getFullYear(), endDate.getFullYear(), true);
+      visualize(data, "Engineering", "#chart-engineering", startDate.getFullYear(), endDate.getFullYear());
       visualize(data, "LAS", "#chart-las", startDate.getFullYear(), endDate.getFullYear());
       visualize(data, "ACES", "#chart-aces", startDate.getFullYear(), endDate.getFullYear());
       visualize(data, "Applied Health Sciences", "#chart-ahs", startDate.getFullYear(), endDate.getFullYear());
-
+      visualize(data, "Business", "#chart-business", startDate.getFullYear(), endDate.getFullYear());
+      visualize(data, "Education", "#chart-education", startDate.getFullYear(), endDate.getFullYear());
+      visualize(data, "Fine and Applied Arts", "#chart-fine-applied-arts", startDate.getFullYear(), endDate.getFullYear());
+      visualize(data, "Media", "#chart-media", startDate.getFullYear(), endDate.getFullYear());
 
     })
       .default(new Date(2018, 1, 1));
