@@ -67,6 +67,7 @@ var visualize = function(data, college, id, startDate, endDate, replace = true) 
      .text(college);
 
   svg.append("text")
+     .attr("class", "year-label")
      .attr("x", xScale(startDate))
      .attr("y", 25)
      .attr("text-anchor", "middle")
@@ -74,6 +75,7 @@ var visualize = function(data, college, id, startDate, endDate, replace = true) 
      .text(startDate);
 
   svg.append("text")
+     .attr("class", "year-label")
      .attr("x", xScale(endDate))
      .attr("y", 25)
      .attr("text-anchor", "middle")

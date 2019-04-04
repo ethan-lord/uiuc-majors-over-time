@@ -18,9 +18,6 @@ body{
    background: -moz-linear-gradient(to left top, #13294c, #e84a27) fixed !important;
    background: -ms-linear-gradient(to left top, #13294c, #e84a27) fixed !important;
    background: -o-linear-gradient(to left top, #13294c, #e84a27) fixed !important;
-
-
-
 }
 
 #bg-left{
@@ -63,14 +60,26 @@ body{
 /* Second Color #13294c */
 .jumbotron h1{
   text-align: center;
+  font-size: 50px;
 }
 
 text {
   font-family: "Helvetica Neue", Helvetica, Arial, sans-serif;
-  font-weight: bold;
+
   fill: #ecf0f1;
+  font-size: 1.3em;
+  /* font-weight: bold; */
 }
 
+.college-label{
+  font-size: 1.3em;
+  /* font-weight: bold; */
+}
+
+.year-label{
+  font-size: 1.03em;
+  /* font-weight: normal; */
+}
 /* .charts {
   margin-top:40px;
 
@@ -79,7 +88,6 @@ text {
 
 .slider {
   text-align: center;
-
 }
 
 
