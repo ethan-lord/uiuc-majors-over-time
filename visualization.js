@@ -225,6 +225,7 @@ var sliders = function(data){
     .on('onchange', val => {
       startDate = Number(val.map(d3.timeFormat('%Y'))[0]);
       endDate = Number(val.map(d3.timeFormat('%Y'))[1]);
+      d3.select('#sliderYears').text(val.map(d3.timeFormat('%Y')).join('-'));
 
       visualize(data, "Engineering", "#chart-engineering", startDate, endDate);
       visualize(data, "LAS", "#chart-las", startDate, endDate);
@@ -247,12 +248,12 @@ var sliders = function(data){
     //
     // gRange.call(sliderStart);
     //
-    // d3.select('p#value-range').text(
-    //   sliderStart
-    //     .value()
-    //     .map(d3.format('.2%'))
-    //     .join('-')
-    // );
+    d3.select('#sliderYears').text(
+      sliderRange
+        .value()
+        .map(d3.timeFormat('%Y'))
+        .join('-')
+    );
 
 
     d3.select('#slider')

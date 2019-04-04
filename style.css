@@ -96,6 +96,13 @@ text {
   margin-bottom: 150px;
 }
 
+#sliderYears{
+  fill:#ecf0f1 !important;
+text-align: center !important;
+
+
+}
+
 
 .charts {
     margin-top:40px;
