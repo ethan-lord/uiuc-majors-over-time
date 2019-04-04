@@ -92,9 +92,9 @@ var visualize = function(data, college, id, startDate, endDate, replace = true) 
 
   var tip = d3.tip().attr('class', 'd3-tip').html(function(d) {
       return d[0] + "<br>" +
-             d[1][0] + " &#8594; " + d[1][1] + " students" + "<br>" +
-             (Math.round(100 * d[1][2] / d[1][1] * 10) / 10) + "% Male in " + endDate + "<br>" +
-             (Math.round(100 * d[1][3] / d[1][1] * 10) / 10) + "% in-state in " + endDate;
+             d[1][0] + " &#8594; " + d[1][3] + " students" + "<br>" +
+             (Math.round(100 * d[1][1] / d[1][0] * 10) / 10) + "% &#8594; " + (Math.round(100 * d[1][4] / d[1][3] * 10) / 10) + "% Male" + "<br>" +
+             (Math.round(100 * d[1][2] / d[1][0] * 10) / 10) + "% &#8594; " + (Math.round(100 * d[1][5] / d[1][3] * 10) / 10) + "% in-state";
     });
   svg.call(tip);
 
@@ -104,6 +104,8 @@ var visualize = function(data, college, id, startDate, endDate, replace = true) 
     if (d["College"] == college) {
       if (d["Fall"] == startDate) {
         majorToCounts.set(d["Major Name"], [d["Total"]]);
+        majorToCounts.get(d["Major Name"]).push(d["Male"]);
+        majorToCounts.get(d["Major Name"]).push(d["Illinois"]);
       } else if (majorToCounts.has(d["Major Name"]) && d["Fall"] == endDate) {
         majorToCounts.get(d["Major Name"]).push(d["Total"]);
         majorToCounts.get(d["Major Name"]).push(d["Male"]);
@@ -114,7 +116,7 @@ var visualize = function(data, college, id, startDate, endDate, replace = true) 
 
   majorToCounts.forEach((value, key, map)=>
   {
-    if (majorToCounts.get(key).length == 1 || majorToCounts.get(key).length == 0) {
+    if (majorToCounts.get(key).length <= 3) {
       majorToCounts.delete(key);
     }
   });
@@ -131,7 +133,7 @@ var visualize = function(data, college, id, startDate, endDate, replace = true) 
   majorToCounts.forEach((value,key,map)=>
   {
     var xCenter = xScale((startDate + endDate) / 2);
-    var yCenter = (yScale( majorToCounts.get(key)[0] ) + yScale( majorToCounts.get(key)[1] )) / 2;
+    var yCenter = (yScale( majorToCounts.get(key)[0] ) + yScale( majorToCounts.get(key)[3] )) / 2;
 
     var currLine = svg.append("line")
                       .attr("class", "slope-line")
@@ -146,7 +148,7 @@ var visualize = function(data, college, id, startDate, endDate, replace = true) 
                          return xScale( endDate );
                        })
                        .attr("y2", function (d, i) {
-                         return yScale( majorToCounts.get(key)[1] );
+                         return yScale( majorToCounts.get(key)[3] );
                        })
                        .attr("stroke-width", 2)
                        .attr("stroke", "white")
@@ -165,7 +167,7 @@ var visualize = function(data, college, id, startDate, endDate, replace = true) 
            return xScale( endDate );
          })
          .attr("y2", function (d, i) {
-           return yScale( majorToCounts.get(key)[1] );
+           return yScale( majorToCounts.get(key)[3] );
          })
          .attr("stroke-width", 8)
          .attr("stroke", "black")
@@ -181,7 +183,7 @@ var visualize = function(data, college, id, startDate, endDate, replace = true) 
               .attr("stroke-width", 3);
 
             tip.direction('n');
-            tip.offset( [-(Math.min(yScale( majorToCounts.get(key)[1] ), yScale( majorToCounts.get(key)[0] )) - yCenter) - 20, 0] );
+            tip.offset( [-(Math.min(yScale( majorToCounts.get(key)[3] ), yScale( majorToCounts.get(key)[0] )) - yCenter) - 20, 0] );
             tip.show([key, value], this);
          })
          .on("mouseout", function(d) {
@@ -222,7 +224,12 @@ var sliders = function(data){
     .on('onchange', val => {
       startDate = Number(val.map(d3.timeFormat('%Y'))[0]);
       endDate = Number(val.map(d3.timeFormat('%Y'))[1]);
-      d3.select('#sliderYears').text(val.map(d3.timeFormat('%Y')).join('-'));
+      d3.select('#sliderYears').text(val.map(d3.timeFormat('%Y')).join(' - '));
+
+      d3.select('h1').text(
+        "UIUC Undergraduate Majors from " + 
+        val.map(d3.timeFormat('%Y')).join(' to ')
+      );
 
       visualize(data, "Engineering", "#chart-engineering", startDate, endDate);
       visualize(data, "LAS", "#chart-las", startDate, endDate);
@@ -249,7 +256,15 @@ var sliders = function(data){
       sliderRange
         .value()
         .map(d3.timeFormat('%Y'))
-        .join('-')
+        .join(' - ')
+    );
+
+    d3.selectAll("h1").text (
+      "UIUC Undergraduate Majors from " +
+      sliderRange
+        .value()
+        .map(d3.timeFormat('%Y'))
+        .join(' to ')
     );
 
 
