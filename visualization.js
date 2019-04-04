@@ -107,11 +107,11 @@ var visualize = function(data, college, id, startDate, endDate, replace = true) 
   });
 
   svg.append("g")
-    .attr("class", "y axis")
+    .attr("class", "y-axis")
     .call(yAxisLeftVariable);
 
   svg.append("g")
-    .attr("class", "y axis")
+    .attr("class", "y-axis")
     .attr("transform", "translate( " + (width) + ", 0 )")
     .call(yAxisRightVariable);
 
@@ -133,7 +133,7 @@ var visualize = function(data, college, id, startDate, endDate, replace = true) 
                          return yScale( majorToCounts.get(key)[1] );
                        })
                        .attr("stroke-width", 2)
-                       .attr("stroke", "black")
+                       .attr("stroke", "white")
                        .attr("opacity", 0.8);
 
     svg.append("line")

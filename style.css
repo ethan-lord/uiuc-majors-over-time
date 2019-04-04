@@ -25,7 +25,7 @@ body{
   min-height: 100%;
   height: 100%;
   background-color:#13294c;
-  width:1%;
+  width:1.5%;
   position: fixed;
   top:0;
   left: 0;
@@ -36,10 +36,10 @@ body{
   min-height: 100%;
   height: 100%;
   background-color:#e84a27;
-  width:1%;
+  width:1.5%;
   position: fixed;
   top:0;
-  left: 99%;
+  left: 98.5%;
 }
 
 
@@ -67,24 +67,24 @@ text {
   font-family: "Helvetica Neue", Helvetica, Arial, sans-serif;
 
   fill: #ecf0f1;
-  font-size: 1.4em;
+  font-size: 1.15em;
   /* font-weight: bold; */
 }
 
-.college-label{
+.tick{
   font-size: 1.3em;
-  /* font-weight: bold; */
+  font-style:italic;
+}
+
+.college-label{
+  font-size: 1.4em;
+  font-weight: bold;
 }
 
 .year-label{
   font-size: 1.04em;
   /* font-weight: normal; */
 }
-/* .charts {
-  margin-top:40px;
-
-
-} */
 
 .author{
   text-align: center;
@@ -92,9 +92,9 @@ text {
   display: block;
 }
 
-.slider {
+#slider {
   text-align: center;
-
+  margin-bottom: 150px;
 }
 
 
