@@ -143,3 +143,35 @@ text-align: center !important;
     from { opacity: 0; }
     to   { opacity: 1; }
 }
+
+.d3-tip, .d3-tip:after {
+    line-height: 1;
+    pointer-events: none
+}
+
+.d3-tip {
+    font-weight: 700;
+    padding: 12px;
+    background: rgba(0, 0, 0, .8);
+    color: #fff;
+    border-radius: 2px
+}
+
+.d3-tip:after {
+    box-sizing: border-box;
+    display: inline;
+    font-size: 10px;
+    width: 100%;
+    color: rgba(0, 0, 0, .8);
+    position: absolute
+}
+
+.d3-tip.n:after {
+    content: "\25BC";
+    margin: 0px 0 0;
+    top: 100%;
+    left: 0;
+    text-align: center
+}
+
+
