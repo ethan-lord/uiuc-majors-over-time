@@ -212,52 +212,48 @@ var sliders = function(data){
       }
   });
 
-  var sliderStart = d3
+  var sliderRange = d3
     .sliderHorizontal()
     .min(d3.min(yearRange))
     .max(d3.max(yearRange))
     .step(1000 * 60 * 60 * 24 * 365)
     .width(500)
+    .fill('#2196f3')
     .displayValue(true)
     .tickFormat(d3.timeFormat('%Y'))
+    .default([new Date(1980, 1, 1), new Date(2018, 1, 1)])
     .on('onchange', val => {
+      startDate = val.map(d3.timeFormat('%Y'))[0];
+      endDate = val.map(d3.timeFormat('%Y'))[1];
 
-      startDate = val;
+      visualize(data, "Engineering", "#chart-engineering", startDate, endDate);
+      visualize(data, "LAS", "#chart-las", startDate, endDate);
+      visualize(data, "ACES", "#chart-aces", startDate, endDate);
+      visualize(data, "Applied Health Sciences", "#chart-ahs", startDate, endDate);
+      visualize(data, "Business", "#chart-business", startDate, endDate);
+      visualize(data, "Education", "#chart-education", startDate, endDate);
+      visualize(data, "Fine and Applied Arts", "#chart-fine-applied-arts", startDate, endDate);
+      visualize(data, "Media", "#chart-media", startDate, endDate);
+    });
 
-      visualize(data, "Engineering", "#chart-engineering", startDate.getFullYear(), endDate.getFullYear());
-      visualize(data, "LAS", "#chart-las", startDate.getFullYear(), endDate.getFullYear());
-      visualize(data, "ACES", "#chart-aces", startDate.getFullYear(), endDate.getFullYear());
-      visualize(data, "Applied Health Sciences", "#chart-ahs", startDate.getFullYear(), endDate.getFullYear());
-      visualize(data, "Business", "#chart-business", startDate.getFullYear(), endDate.getFullYear());
-      visualize(data, "Education", "#chart-education", startDate.getFullYear(), endDate.getFullYear());
-      visualize(data, "Fine and Applied Arts", "#chart-fine-applied-arts", startDate.getFullYear(), endDate.getFullYear());
-      visualize(data, "Media", "#chart-media", startDate.getFullYear(), endDate.getFullYear());
-    })
-    .default(new Date(1980, 1, 1));
 
-  var sliderEnd = d3
-    .sliderHorizontal()
-    .min(d3.min(yearRange))
-    .max(d3.max(yearRange))
-    .step(1000 * 60 * 60 * 24 * 365)
-    .width(500)
-    .displayValue(true)
-    .tickFormat(d3.timeFormat('%Y'))
-    .on('onchange', val => {
+    // var gRange = d3
+    //   .select('div#slider-range')
+    //   .append('svg')
+    //   .attr('width', 500)
+    //   .attr('height', 100)
+    //   .append('g')
+    //   .attr('transform', 'translate(30,30)');
+    //
+    // gRange.call(sliderStart);
+    //
+    // d3.select('p#value-range').text(
+    //   sliderStart
+    //     .value()
+    //     .map(d3.format('.2%'))
+    //     .join('-')
+    // );
 
-      endDate = val;
-
-      visualize(data, "Engineering", "#chart-engineering", startDate.getFullYear(), endDate.getFullYear());
-      visualize(data, "LAS", "#chart-las", startDate.getFullYear(), endDate.getFullYear());
-      visualize(data, "ACES", "#chart-aces", startDate.getFullYear(), endDate.getFullYear());
-      visualize(data, "Applied Health Sciences", "#chart-ahs", startDate.getFullYear(), endDate.getFullYear());
-      visualize(data, "Business", "#chart-business", startDate.getFullYear(), endDate.getFullYear());
-      visualize(data, "Education", "#chart-education", startDate.getFullYear(), endDate.getFullYear());
-      visualize(data, "Fine and Applied Arts", "#chart-fine-applied-arts", startDate.getFullYear(), endDate.getFullYear());
-      visualize(data, "Media", "#chart-media", startDate.getFullYear(), endDate.getFullYear());
-
-    })
-      .default(new Date(2018, 1, 1));
 
     d3.select('#slider')
        .append('svg')
@@ -265,15 +261,8 @@ var sliders = function(data){
        .attr('height', 100)
        .append('g')
        .attr('transform', 'translate(100,50)')
-       .call(sliderStart);
+       .call(sliderRange);
 
-    d3.select('#slider')
-        .append('svg')
-        .attr('width', 700)
-        .attr('height', 100)
-        .append('g')
-        .attr('transform', 'translate(100,50)')
-        .call(sliderEnd);
 }
 /*
   svg.selectAll("Fall")
